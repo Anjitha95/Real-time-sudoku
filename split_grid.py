@@ -7,6 +7,8 @@ Created on Thu Jul 16 09:51:01 2020
 import cv2
 import pytesseract
 
+
+# If path not set change the path given below to the path where your tesseract.exe file exists
 pytesseract.pytesseract.tesseract_cmd = r'C:\Program Files\Tesseract-OCR\tesseract.exe'
 
 
@@ -15,11 +17,7 @@ def digitize_captured(sudo):
     """
     Arguments:
     sudo -- A squared and unsolved sudoku image
-    my_model -- A classification CNN model trained on 10 classes
-                classes: blank images, 1, 2, .., 9
-
-    Returns:
-    grid -- a (9 x 9) matrix of all predicted digits
+    writes all the croped sudoku cells to the folder.
     """
 
     delta_w, delta_h = int(sudo.shape[0] / 9), int(sudo.shape[1] / 9)   # Ratios to divide the image by
@@ -32,12 +30,22 @@ def digitize_captured(sudo):
             cv2.imwrite(str(h) + str(w) + '.png',crop)
 
 def image_ocr(image):
+    """
+    Arguments:
+    image: takes the croped cell from the folder.
+    Returns
+    return_string: Here the OCR recognise and converts the image of digits into string 
+    and return it as a set of string 
+    """
     image = cv2.imread(image)
     return_string = pytesseract.image_to_string(image, lang='eng', config='--psm 10 --oem 3 -c tessedit_char_whitelist=0123456789')
     return return_string
 
 
 def sudoku_grid():
+    """
+    Converts the returned string from image_ocr() function to an array
+    """
     ocr_string = lambda s: 0 if s == "" else int(s)
     board=[]
     for i in range (0,9):

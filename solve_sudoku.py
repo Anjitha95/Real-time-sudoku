@@ -5,6 +5,7 @@ Created on Mon Jul 13 18:13:32 2020
 @author: anjit
 """
 
+""" Backtracking algorithm by techwithtim"""
 def solve(bo):
     find = find_empty(bo)
     if not find:

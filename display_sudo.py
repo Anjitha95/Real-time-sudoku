@@ -9,6 +9,8 @@ import cv2
 
 
 def displaySolution(image, final):
+    
+    """Function that allows to overlay the sudoku solution to a blank grid """
     image = image.copy()
     cell_width = image.shape[1] //9
     cell_height = image.shape[0] // 9
@@ -27,6 +29,10 @@ def displaySolution(image, final):
     return image
 
 def print_sudo(sudo_grid):
+    
+    """
+    The function that helps in printing the sudoku grid in the console in a better arrangement
+    """
     for i in range(len(sudo_grid)):
         line = ""
         if i == 3 or i == 6:

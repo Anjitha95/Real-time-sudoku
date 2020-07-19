@@ -150,6 +150,3 @@ def transform_image_perspective(image, current_perspective):
     
     return wrap, transform_matrix 
 
-def inverse_transform_image_perspective(self, image, full_image_height, full_image_width):
-    assert self.transform_matrix is not None
-    return cv2.warpPerspective(image, self.transform_matrix, (full_image_width, full_image_height), flags=cv2.WARP_INVERSE_MAP)

@@ -13,6 +13,7 @@ import pytesseract
 import split_grid
 import display_sudo
 
+# If path not set change the path given below to the path where your tesseract.exe file exists
 pytesseract.pytesseract.tesseract_cmd = r'C:\Program Files\Tesseract-OCR\tesseract.exe'
 
 
@@ -48,7 +49,7 @@ while(True):
         message = "Sudoku Detected"
         cv2.imwrite('Sudoku.png',sudoku_grid_image)
         split_grid.digitize_captured(sudoku_grid_image)
-        sudoku_grid = split_grid.sudoku_grid()
+        """sudoku_grid = split_grid.sudoku_grid()
         print("sudoku before solving")
         print("\n\n")
         display_sudo.print_sudo(sudoku_grid)
@@ -57,8 +58,8 @@ while(True):
         print("\n\n")
         display_sudo.print_sudo(sudoku_grid)
         solution = display_sudo.displaySolution(blank_grid, sudoku_grid)
-        cv2.imshow("Result", solution)
-    #cv2.imshow("Thresh", preprocessed_frame)"""
+        cv2.imshow("Result", solution)"""
+    #cv2.imshow("Thresh", preprocessed_frame)
     
     #cv2.putText(frame, message, (10, 350), font, 0.6, (255, 0, 0))
     cv2.imshow("Sudoku Frame", frame)
